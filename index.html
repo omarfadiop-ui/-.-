@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>معاً نحقق الحلم 🚀 - المساعد الذكي الخارق</title>
+    <title>معاً نحقق الحلم 🚀 - التحديث المصلح</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -41,9 +41,9 @@
                     <div>
                         <h1 class="text-base font-black text-white flex items-center gap-1.5">
                             معاً نحقق الحلم
-                            <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">🇸🇾 v4.0 PRO</span>
+                            <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">🇸🇾 v4.1 FIX</span>
                         </h1>
-                        <p class="text-[10px] text-slate-400 font-medium">مساعدك الذكي الخارق للتغذية واللياقة</p>
+                        <p class="text-[10px] text-slate-400 font-medium">تطبيقك الرياضي الشامل للتغذية واللياقة</p>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
         </div>
     </header>
 
-    <!-- Main Navigation Bar (6 Tabs) -->
+    <!-- App Main Navigation Dock (Bottom Bar) -->
     <nav class="fixed bottom-3 left-3 right-3 z-50 max-w-md mx-auto glass-card rounded-3xl p-1.5 border border-slate-700/60 shadow-2xl">
         <div class="grid grid-cols-6 gap-1 text-[9px] font-bold text-center">
             <button id="btn-tab-calc" onclick="switchTab('calc')" class="py-2 rounded-2xl bg-emerald-600 text-white shadow-lg transition-all flex flex-col items-center gap-0.5">
@@ -100,10 +100,10 @@
         </div>
     </nav>
 
-    <!-- App Main Views Container -->
+    <!-- App Content Views -->
     <main class="max-w-md mx-auto px-4 mt-4 space-y-4">
 
-        <!-- TAB 1: USER DATA -->
+        <!-- TAB 1: USER BODY DATA -->
         <div id="tab-calc" class="space-y-4">
             <div class="glass-card p-5 rounded-3xl space-y-4 border border-slate-800">
                 <div class="flex items-center gap-2 pb-2 border-b border-slate-800">
@@ -144,7 +144,7 @@
             </div>
         </div>
 
-        <!-- TAB 2: AI CHAT ASSISTANT (FULLY UPGRADED & FREE) -->
+        <!-- TAB 2: AI CHAT ASSISTANT -->
         <div id="tab-chat" class="space-y-3 hidden">
             <div class="glass-card p-4 rounded-3xl border border-slate-800 flex flex-col h-[480px]">
                 <div class="flex items-center gap-2.5 pb-3 border-b border-slate-800">
@@ -152,8 +152,8 @@
                         🤖
                     </div>
                     <div>
-                        <h3 class="text-xs font-bold text-white">المساعد الذكي الخارق (مجاني بالكامل)</h3>
-                        <p class="text-[9px] text-slate-400">اسأل عن السعرات، الوجبات، التمارين وسأجيبك فوراً بكل تفصيل!</p>
+                        <h3 class="text-xs font-bold text-white">المساعد الذكي الخارق (مجاني)</h3>
+                        <p class="text-[9px] text-slate-400">اسأل عن السعرات، الوجبات، التمارين وسأجيبك بكل تفصيل!</p>
                     </div>
                 </div>
 
@@ -330,7 +330,7 @@
 
     </main>
 
-    <!-- Creator Signature Footer -->
+    <!-- Footer Signature -->
     <footer class="mt-8 mb-6 text-center">
         <div class="inline-block glass-card border border-slate-800 rounded-2xl px-5 py-2.5 shadow-xl">
             <p class="text-xs font-bold text-slate-200 flex items-center justify-center gap-1.5">
@@ -415,10 +415,26 @@
             currentLevel = Math.floor(currentXP / 100) + 1;
             localStorage.setItem('user_xp', currentXP);
             document.getElementById('user-xp').innerText = currentXP;
-            document.getElementById('user-level'].innerText = currentLevel;
+            document.getElementById('user-level').innerText = currentLevel;
         }
 
-        // FULLY UPGRADED AI CHAT ENGINE (RESPONDS TO EVERYTHING ACCURATELY)
+        // FIXED TAB SWITCHER DOCK FUNCTION
+        function switchTab(tab) {
+            const tabsList = ['calc', 'chat', 'cam', 'meals', 'schedule', 'report'];
+            
+            tabsList.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`btn-tab-${t}`);
+                if (el) el.classList.add('hidden');
+                if (btn) btn.className = "py-2 rounded-2xl text-slate-400 hover:text-white transition-all flex flex-col items-center gap-0.5";
+            });
+
+            const activeEl = document.getElementById(`tab-${tab}`);
+            const activeBtn = document.getElementById(`btn-tab-${tab}`);
+            if (activeEl) activeEl.classList.remove('hidden');
+            if (activeBtn) activeBtn.className = "py-2 rounded-2xl bg-emerald-600 text-white shadow-lg transition-all flex flex-col items-center gap-0.5";
+        }
+
         function sendChatMessage() {
             const input = document.getElementById('chat-input');
             const query = input.value.trim();
@@ -426,7 +442,7 @@
 
             const chatBox = document.getElementById('chat-box');
 
-            // User Message
+            // Append User Msg
             const userMsg = document.createElement('div');
             userMsg.className = 'flex items-start justify-end gap-2';
             userMsg.innerHTML = `
@@ -439,23 +455,21 @@
             input.value = '';
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // AI Dynamic Response Logic
+            // AI Dynamic AI Answers Generator
             setTimeout(() => {
-                let replyText = "يا هلا بيك يا بطل! سؤالك رائع ومهم جداً. استمر في التركيز على نظامك الصحي، شرب الماء، والرياضة اليومية لتحقيق هدفك بسرعة!";
+                let replyText = "يا هلا بيك يا بطل! سؤالك رائع جداً. استمر بالتركيز على التغذية الصحية والرياضة اليومية لتحقيق هدفك بسرعة!";
                 const q = query.toLowerCase();
 
                 if (q.includes('تفاح') || q.includes('موز') || q.includes('فواكه') || q.includes('سعرات')) {
-                    replyText = "🍎🍌 حساب التفاحة والموزة تقريبياً:\n• تفاحة متوسطة: ~95 سعرة حرارية (25ج كارب).\n• موزة متوسطة: ~105 سعرة حرارية (27ج كارب).\nالاثنين مع بعض سناك طاقوي جبار قبل أو بعد المشي والتمارين!";
-                } else if (q.includes('كيفك') || q.includes('شخبار') || q.includes('مين انت') || q.includes('هلا')) {
-                    replyText = "أنا بخير بشوفتك يا بطل! أنا مساعدك الذكي المصمم خصيصاً لمساعدتك أنت والمبتكر عمر فادي عبد اللطيف لتحقيق أهدافو الرياضية والصحية بنجاح تام! 🚀🇸🇾";
+                    replyText = "🍎🍌 حساب التفاحة والموزة تقريبياً:\n• تفاحة متوسطة: ~95 سعرة حرارية (25ج كارب).\n• موزة متوسطة: ~105 سعرة حرارية (27ج كارب).\nالاثنين مع بعض سناك ممتاز يعطيك ~200 سعرة حرارية قبل أو بعد المشي!";
+                } else if (q.includes('كيفك') || q.includes('شخبار') || q.includes('مين انت') || q.includes('هلا') || q.includes('شلونك')) {
+                    replyText = "أنا بخير والحمد لله يا بطل! أنا مساعدك الذكي المصمم خصيصاً لمساعدتك أنت والمبتكر عمر فادي عبد اللطيف لتحقيق أهدافه الرياضية والصحية بنجاح تام! 🚀🇸🇾";
                 } else if (q.includes('سناك') || q.includes('وجبة خفيفة') || q.includes('جوعان')) {
-                    replyText = "🍽️ مقترحات سناك سريعة وصحية:\n1. ثمرة رمان طازجة مع حفنة لوز.\n2. سندويتش لبنة خفيفة مع رشة زعتر.\n3. موزة مع ملعقة عسل طبيعي.";
+                    replyText = "🍽️ مقترحات سناك سريعة وصحية:\n1. ثمرة رمان طازجة مع لوز.\n2. سندويتش لبنة خفيفة ومقدوس.\n3. موزة مع ملعقة عسل طبيعي.";
                 } else if (q.includes('ماء') || q.includes('مياه') || q.includes('عطش')) {
-                    replyText = "💧 تذكير بالماء: احرص على شرب ما لا يقل عن 2 لتر موزعة طوال اليوم، خصوصاً أثناء الحصة المدرسية وبعد المشي لتجنب جفاف العضلات!";
-                } else if (q.includes('تمرين') || q.includes('عضلات') || q.includes('بطن') || q.includes('صدر') || q.includes('مشي')) {
-                    replyText = "💪 التمارين والمشي:\n• المشي 40 دقيقة يحرق دهون ممتازة.\n• تمارين الضغط (Push-ups) تقوي الصدر والذراعين.\n• التزم بجدولك اليومي حسب عمرك لتلاحظ فرق كبير خلال أسبوعين!";
-                } else if (q.includes('نوم') || q.includes('سهر')) {
-                    replyText = "😴 النوم الصحي أساس بناء العضلات ونمو الجسم في عمرك! احرص على النوم 8 ساعات مبكراً لتستيقظ بنشاط وتركيز عالي بالمدرسة.";
+                    replyText = "💧 تذكير بالماء: احرص على شرب ما لا يقل عن 2 لتر موزعة طوال اليوم لتجنب جفاف العضلات وتنشيط التركيز والذكاء!";
+                } else if (q.includes('تمرين') || q.includes('عضلات') || q.includes('بطن') || q.includes('مشي')) {
+                    replyText = "💪 التمارين والمشي:\n• المشي 40 دقيقة يحرق الدهون بامتياز.\n• تمارين الضغط تقوي الصدر والذراعين.\n• الالتزام اليومي يصنع أبطالاً!";
                 }
 
                 const aiMsg = document.createElement('div');
@@ -592,15 +606,6 @@
             alert('تم تسجيل الوجبة بنجاح في إحصائيات يومك! 🎯');
         }
 
-        function switchTab(tab) {
-            ['calc', 'chat', 'cam', 'meals', 'schedule', 'report'].forEach(t => {
-                document.getElementById(`tab-${t}`).classList.add('hidden');
-                document.getElementById(`btn-tab-${t}`).className = "py-2 rounded-2xl text-slate-400 hover:text-white transition-all flex flex-col items-center gap-0.5";
-            });
-            document.getElementById(`tab-${tab}`).classList.remove('hidden');
-            document.getElementById(`btn-tab-${tab}`).className = "py-2 rounded-2xl bg-emerald-600 text-white shadow-lg transition-all flex flex-col items-center gap-0.5";
-        }
-
         function renderSchedule() {
             const list = document.getElementById('schedule-tasks-list');
             list.innerHTML = '';
@@ -646,7 +651,7 @@
             renderSchedule();
         }
 
-        // Init App State
+        // App Init
         checkAndResetDailyData();
         updateDailyUI();
         renderSchedule();
