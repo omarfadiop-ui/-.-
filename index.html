@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تطبيق جدولي الصحي والوجبات</title>
+    <title>تطبيق اللياقة والجدول اليومي</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -12,27 +12,26 @@
             font-family: 'Tajawal', sans-serif;
             background-color: #f1f5f9;
         }
-        .custom-checkbox:checked {
-            background-color: #10b981;
-            border-color: #10b981;
-        }
     </style>
 </head>
 <body class="min-h-screen text-slate-800 pb-10">
 
     <!-- Header Section -->
-    <header class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white pt-8 pb-6 px-4 shadow-lg rounded-b-3xl">
+    <header class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white pt-6 pb-6 px-4 shadow-lg rounded-b-3xl">
         <div class="max-w-md mx-auto text-center">
             <h1 class="text-2xl font-extrabold tracking-wide mb-1">🌱 جَدوَلِي الصِّحِّي</h1>
             <p class="text-emerald-100 text-xs font-medium">مساعدك اليومي لللياقة والوجبات المتوازنة</p>
             
-            <!-- Tab Navigation Buttons -->
-            <div class="flex bg-emerald-800/50 p-1.5 rounded-2xl mt-6 backdrop-blur-md border border-emerald-500/30">
-                <button id="btn-routine" onclick="switchTab('routine')" class="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 bg-white text-emerald-800 shadow-md">
-                    ⏱️ الجدول اليومي
+            <!-- 3 Top Navigation Buttons -->
+            <div class="grid grid-cols-3 gap-1 bg-emerald-800/50 p-1.5 rounded-2xl mt-5 backdrop-blur-md border border-emerald-500/30">
+                <button id="btn-routine" onclick="switchTab('routine')" class="py-2 rounded-xl font-bold text-xs transition-all duration-200 bg-white text-emerald-800 shadow-md">
+                    ⏱️ أيام الدراسة
                 </button>
-                <button id="btn-meals" onclick="switchTab('meals')" class="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 text-emerald-100 hover:text-white">
-                    🍳 الوجبات والتحضير
+                <button id="btn-vacation" onclick="switchTab('vacation')" class="py-2 rounded-xl font-bold text-xs transition-all duration-200 text-emerald-100 hover:text-white">
+                    🏖️ أيام الإجازة
+                </button>
+                <button id="btn-meals" onclick="switchTab('meals')" class="py-2 rounded-xl font-bold text-xs transition-all duration-200 text-emerald-100 hover:text-white">
+                    🍳 الوجبات
                 </button>
             </div>
         </div>
@@ -41,69 +40,70 @@
     <!-- Main Content Container -->
     <main class="max-w-md mx-auto px-4 mt-6">
 
-        <!-- TAB 1: ROUTINE PAGE -->
+        <!-- TAB 1: SCHOOL ROUTINE PAGE -->
         <div id="tab-routine" class="space-y-4">
-            
-            <!-- Progress Box -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
                 <div class="flex justify-between items-center mb-2">
-                    <span class="text-xs font-bold text-slate-500">إنجاز اليوم</span>
-                    <span id="progress-text" class="text-sm font-extrabold text-emerald-600">0%</span>
+                    <span class="text-xs font-bold text-slate-500">إنجاز أيام الدراسة</span>
+                    <span id="progress-text-school" class="text-sm font-extrabold text-emerald-600">0%</span>
                 </div>
                 <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden p-0.5 border border-slate-200/60">
-                    <div id="progress-bar" class="bg-gradient-to-r from-emerald-500 to-teal-500 h-full rounded-full transition-all duration-300 w-0"></div>
+                    <div id="progress-bar-school" class="bg-gradient-to-r from-emerald-500 to-teal-500 h-full rounded-full transition-all duration-300 w-0"></div>
                 </div>
             </div>
 
-            <!-- Task List -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
                 <h2 class="text-base font-bold text-slate-700 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
-                    <span>📋</span> مهامك اليومية
+                    <span>🏫</span> مهام أيام الدراسة
                 </h2>
-                <div id="task-list" class="space-y-3">
-                    <!-- Tasks inserted dynamically -->
-                </div>
+                <div id="school-task-list" class="space-y-3"></div>
             </div>
 
-            <button onclick="resetTasks()" class="w-full py-2.5 text-xs text-slate-400 hover:text-rose-500 font-semibold transition-colors text-center">
-                إعادة ضبط جدول اليوم 🔄
+            <button onclick="resetSchoolTasks()" class="w-full py-2.5 text-xs text-slate-400 hover:text-rose-500 font-semibold transition-colors text-center">
+                إعادة ضبط جدول الدراسة 🔄
             </button>
         </div>
 
-        <!-- TAB 2: MEALS PAGE -->
-        <div id="tab-meals" class="space-y-4 hidden">
-            
-            <div class="bg-amber-50 border border-amber-200/60 rounded-2xl p-4 text-amber-800 text-xs leading-relaxed">
-                💡 <b>ملاحظة مدربك:</b> ركز على البروتين الخفيف والشرب المستمر للماء طوال اليوم لتبني عضلات صحية أثناء المشي!
+        <!-- TAB 2: VACATION ROUTINE PAGE -->
+        <div id="tab-vacation" class="space-y-4 hidden">
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold text-slate-500">إنجاز يوم الإجازة</span>
+                    <span id="progress-text-vacation" class="text-sm font-extrabold text-teal-600">0%</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden p-0.5 border border-slate-200/60">
+                    <div id="progress-bar-vacation" class="bg-gradient-to-r from-teal-500 to-cyan-500 h-full rounded-full transition-all duration-300 w-0"></div>
+                </div>
             </div>
 
-            <!-- Meal Cards -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <h2 class="text-base font-bold text-slate-700 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+                    <span>🏖️</span> جدول يوم الإجازة المريح
+                </h2>
+                <div id="vacation-task-list" class="space-y-3"></div>
+            </div>
+
+            <button onclick="resetVacationTasks()" class="w-full py-2.5 text-xs text-slate-400 hover:text-rose-500 font-semibold transition-colors text-center">
+                إعادة ضبط جدول الإجازة 🔄
+            </button>
+        </div>
+
+        <!-- TAB 3: MEALS PAGE -->
+        <div id="tab-meals" class="space-y-4 hidden">
+            <div class="bg-amber-50 border border-amber-200/60 rounded-2xl p-4 text-amber-800 text-xs leading-relaxed">
+                💡 <b>ملاحظة المدرب:</b> ركز على البروتين الخفيف والشرب المستمر للماء طوال اليوم لبناء وتغذية عضلاتك بعد المشي والتمارين!
+            </div>
+
             <div class="space-y-3">
                 <!-- Breakfast -->
                 <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
                     <div class="flex items-center gap-2 text-emerald-600 font-bold text-sm mb-2">
                         <span class="bg-emerald-50 p-1.5 rounded-lg">☀️</span>
-                        <span>1. وجبة الإفطار (10:30 صباحاً)</span>
+                        <span>1. وجبة الإفطار</span>
                     </div>
                     <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
                         <p class="font-semibold text-slate-700">• الوجبة:</p>
-                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">بيضتان مسلوقتان + خبز أسمر (بر) + خيار وطماطم + كأس حليب دافئ (أو شوفان بالحليب والموز).</p>
-                        <p class="font-semibold text-slate-700">• طريقة التحضير:</p>
-                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">اسلق البيض في ماء مغلي لمدة 8-10 دقائق، أو سخّن الحليب وأضف إليه 3 ملاعق شوفان مع رشة عسل.</p>
-                    </div>
-                </div>
-
-                <!-- School Snack -->
-                <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
-                    <div class="flex items-center gap-2 text-emerald-600 font-bold text-sm mb-2">
-                        <span class="bg-emerald-50 p-1.5 rounded-lg">🏫</span>
-                        <span>2. سناك المدرسة (03:30 عصراً)</span>
-                    </div>
-                    <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
-                        <p class="font-semibold text-slate-700">• الوجبة:</p>
-                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">تفاحة أو موزة + حفنة صغيرة من اللوز/الجوز غير المملح (أو ساندويتش جبنة بيضاء خفيفة).</p>
-                        <p class="font-semibold text-slate-700">• طريقة التحضير:</p>
-                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">جهّز الفاكهة والمكسرات في حافظة صغيرة قبل الذهاب إلى المدرسة لتتناولها في الفسحة.</p>
+                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">بيضتان مسلوقتان + خبز أسمر + خيار وطماطم + كأس حليب دافئ (أو شوفان بالفاكهة والعسل).</p>
                     </div>
                 </div>
 
@@ -111,13 +111,23 @@
                 <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
                     <div class="flex items-center gap-2 text-emerald-600 font-bold text-sm mb-2">
                         <span class="bg-emerald-50 p-1.5 rounded-lg">🍗</span>
-                        <span>3. وجبة الغداء (07:00 مساءً)</span>
+                        <span>2. وجبة الغداء</span>
                     </div>
                     <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
                         <p class="font-semibold text-slate-700">• الوجبة:</p>
-                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">صدر دجاج مشوي أو مسلوق (أو سمك فيليه/تونة) + 5-6 ملاعق أرز + طبق سلطة خضراء مع ليمون.</p>
-                        <p class="font-semibold text-slate-700">• طريقة التحضير:</p>
-                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">تُبّل الدجاج بقليل من الملح والبهارات وقطرات زيت زيتون واشوه في المقلاة الهوائية أو الفرن لمدة 15-20 دقيقة.</p>
+                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">دجاج مشوي/مسلوق أو تونة + أرز + سلطة خضراء مع ليمون.</p>
+                    </div>
+                </div>
+
+                <!-- Snack -->
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex items-center gap-2 text-emerald-600 font-bold text-sm mb-2">
+                        <span class="bg-emerald-50 p-1.5 rounded-lg">🍎</span>
+                        <span>3. السناك الصحي</span>
+                    </div>
+                    <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                        <p class="font-semibold text-slate-700">• الوجبة:</p>
+                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">ثمرة رمان أو تفاحة/موزة + حفنة لوز خفيف.</p>
                     </div>
                 </div>
 
@@ -125,63 +135,83 @@
                 <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
                     <div class="flex items-center gap-2 text-emerald-600 font-bold text-sm mb-2">
                         <span class="bg-emerald-50 p-1.5 rounded-lg">🌙</span>
-                        <span>4. وجبة العشاء (10:00 مساءً)</span>
+                        <span>4. وجبة العشاء</span>
                     </div>
                     <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
                         <p class="font-semibold text-slate-700">• الوجبة:</p>
-                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">علبة زبادي قليل الدسم + خيار مقطع ورشة نعناع (أو ساندويتش لبنة خفيفة بالخبز الأسمر).</p>
-                        <p class="font-semibold text-slate-700">• طريقة التحضير:</p>
-                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">وجبة خفيفة ومريحة للمعدة قبل النوم لا تتطلب سوى تقطيع الخيار وخلطه مع الزبادي.</p>
+                        <p class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">سندويتش لبنة أو مقدوس + تونة وسلطة (أو زبادي وخيار).</p>
                     </div>
                 </div>
             </div>
-
         </div>
 
     </main>
 
     <!-- JavaScript Logic -->
     <script>
-        const tasks = [
-            { id: 1, time: "10:30 ص", text: "الاستيقاظ، شرب ماء، وتناول الإفطار الصحي" },
-            { id: 2, time: "12:30 ظ", text: "الذهاب للمدرسة (خذ معك زمزمية الماء)" },
-            { id: 3, time: "03:30 م", text: "تناول السناك المدرسي الصحي" },
-            { id: 4, time: "07:00 م", text: "الرجوع من المدرسة + تناول وجبة الغداء" },
-            { id: 5, time: "08:30 م", text: "رياضة المشي لمدة 30 دقيقة بخطوة نشطة" },
-            { id: 6, time: "09:30 م", text: "تمارين منزلية لتقوية الصدر والبطن (أيام التمارين)" },
-            { id: 7, time: "10:00 م", text: "تناول وجبة العشاء الخفيفة" },
-            { id: 8, time: "11:00 م", text: "الاستعداد للنوم المبكر (8-9 ساعات)" }
+        const schoolTasks = [
+            { id: 's1', time: "10:30 ص", text: "الاستيقاظ، شرب ماء، وتناول الإفطار الصحي" },
+            { id: 's2', time: "12:30 ظ", text: "الذهاب للمدرسة (مع زمزمية الماء)" },
+            { id: 's3', time: "03:30 م", text: "تناول السناك المدرسي الصحي" },
+            { id: 's4', time: "07:00 م", text: "العودة وتناول وجبة الغداء" },
+            { id: 's5', time: "08:30 م", text: "رياضة المشي لمدة 30-40 دقيقة" },
+            { id: 's6', time: "09:30 م", text: "تمارين منزلية لتقوية الصدر والبطن" },
+            { id: 's7', time: "10:00 م", text: "تناول وجبة العشاء الخفيفة" },
+            { id: 's8', time: "11:00 م", text: "الاستعداد للنوم المبكر" }
+        ];
+
+        const vacationTasks = [
+            { id: 'v1', time: "10:00 ص", text: "الاستيقاظ ونشاط خفيف + شرب ماء" },
+            { id: 'v2', time: "10:30 ص", text: "تناول وجبة إفطار صحية وغنية بالبروتين" },
+            { id: 'v3', time: "02:00 ظ", text: "تناول وجبة الغداء المتوازنة" },
+            { id: 'v4', time: "05:00 م", text: "وقت المشي والرياضة بالهواء الطلق (30-40 دقيقة)" },
+            { id: 'v5', time: "06:30 م", text: "تناول سناك الفاكهة (رمان/موز/تفاح)" },
+            { id: 'v6', time: "07:30 م", text: "تمارين تقوية العضلات والضغط" },
+            { id: 'v7', time: "09:30 م", text: "تناول وجبة عشاء خفيفة" },
+            { id: 'v8', time: "11:30 م", text: "استرخاء ونوم صحي وباكر" }
         ];
 
         function switchTab(tab) {
             const btnRoutine = document.getElementById('btn-routine');
+            const btnVacation = document.getElementById('btn-vacation');
             const btnMeals = document.getElementById('btn-meals');
+
             const tabRoutine = document.getElementById('tab-routine');
+            const tabVacation = document.getElementById('tab-vacation');
             const tabMeals = document.getElementById('tab-meals');
+
+            // Hide all tabs
+            tabRoutine.classList.add('hidden');
+            tabVacation.classList.add('hidden');
+            tabMeals.classList.add('hidden');
+
+            // Reset Styles
+            const activeClass = "py-2 rounded-xl font-bold text-xs transition-all duration-200 bg-white text-emerald-800 shadow-md";
+            const inactiveClass = "py-2 rounded-xl font-bold text-xs transition-all duration-200 text-emerald-100 hover:text-white";
+
+            btnRoutine.className = inactiveClass;
+            btnVacation.className = inactiveClass;
+            btnMeals.className = inactiveClass;
 
             if (tab === 'routine') {
                 tabRoutine.classList.remove('hidden');
-                tabMeals.classList.add('hidden');
-                
-                btnRoutine.className = "flex-1 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 bg-white text-emerald-800 shadow-md";
-                btnMeals.className = "flex-1 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 text-emerald-100 hover:text-white";
+                btnRoutine.className = activeClass;
+            } else if (tab === 'vacation') {
+                tabVacation.classList.remove('hidden');
+                btnVacation.className = activeClass;
             } else {
-                tabRoutine.classList.add('hidden');
                 tabMeals.classList.remove('hidden');
-
-                btnMeals.className = "flex-1 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 bg-white text-emerald-800 shadow-md";
-                btnRoutine.className = "flex-1 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 text-emerald-100 hover:text-white";
+                btnMeals.className = activeClass;
             }
         }
 
-        function renderTasks() {
-            const listContainer = document.getElementById('task-list');
+        function renderSchoolTasks() {
+            const listContainer = document.getElementById('school-task-list');
             listContainer.innerHTML = '';
-            
             let completedCount = 0;
-            const savedState = JSON.parse(localStorage.getItem('healthyAppTabState') || '{}');
+            const savedState = JSON.parse(localStorage.getItem('appSchoolTasksState') || '{}');
 
-            tasks.forEach(task => {
+            schoolTasks.forEach(task => {
                 const isChecked = savedState[task.id] || false;
                 if (isChecked) completedCount++;
 
@@ -192,7 +222,7 @@
                 
                 item.innerHTML = `
                     <div class="flex items-center gap-3">
-                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleTask(${task.id})" class="w-5 h-5 rounded-md border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleTask('${task.id}', 'school')" class="w-5 h-5 rounded-md border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer">
                         <span class="text-xs font-bold">${task.text}</span>
                     </div>
                     <span class="text-[10px] font-semibold bg-white px-2 py-1 rounded-md border border-slate-200 text-amber-600 shrink-0 mr-2">${task.time}</span>
@@ -200,27 +230,69 @@
                 listContainer.appendChild(item);
             });
 
-            const percent = Math.round((completedCount / tasks.length) * 100);
-            document.getElementById('progress-bar').style.width = `${percent}%`;
-            document.getElementById('progress-text').innerText = `${percent}%`;
+            const percent = Math.round((completedCount / schoolTasks.length) * 100);
+            document.getElementById('progress-bar-school').style.width = `${percent}%`;
+            document.getElementById('progress-text-school').innerText = `${percent}%`;
         }
 
-        function toggleTask(id) {
-            const savedState = JSON.parse(localStorage.getItem('healthyAppTabState') || '{}');
+        function renderVacationTasks() {
+            const listContainer = document.getElementById('vacation-task-list');
+            listContainer.innerHTML = '';
+            let completedCount = 0;
+            const savedState = JSON.parse(localStorage.getItem('appVacationTasksState') || '{}');
+
+            vacationTasks.forEach(task => {
+                const isChecked = savedState[task.id] || false;
+                if (isChecked) completedCount++;
+
+                const item = document.createElement('label');
+                item.className = `flex items-center justify-between p-3 rounded-xl border transition-all cursor-pointer ${
+                    isChecked ? 'bg-teal-50/60 border-teal-200 text-slate-400 line-through' : 'bg-slate-50 border-slate-200/80 text-slate-700 hover:bg-slate-100/80'
+                }`;
+                
+                item.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleTask('${task.id}', 'vacation')" class="w-5 h-5 rounded-md border-slate-300 text-teal-600 focus:ring-teal-500 cursor-pointer">
+                        <span class="text-xs font-bold">${task.text}</span>
+                    </div>
+                    <span class="text-[10px] font-semibold bg-white px-2 py-1 rounded-md border border-slate-200 text-teal-600 shrink-0 mr-2">${task.time}</span>
+                `;
+                listContainer.appendChild(item);
+            });
+
+            const percent = Math.round((completedCount / vacationTasks.length) * 100);
+            document.getElementById('progress-bar-vacation').style.width = `${percent}%`;
+            document.getElementById('progress-text-vacation').innerText = `${percent}%`;
+        }
+
+        function toggleTask(id, type) {
+            const storageKey = type === 'school' ? 'appSchoolTasksState' : 'appVacationTasksState';
+            const savedState = JSON.parse(localStorage.getItem(storageKey) || '{}');
             savedState[id] = !savedState[id];
-            localStorage.setItem('healthyAppTabState', JSON.stringify(savedState));
-            renderTasks();
+            localStorage.setItem(storageKey, JSON.stringify(savedState));
+            
+            if (type === 'school') renderSchoolTasks();
+            else renderVacationTasks();
         }
 
-        function resetTasks() {
-            if (confirm('هل تريد إعادة ضبط جميع المهام ليوم جديد؟')) {
-                localStorage.removeItem('healthyAppTabState');
-                renderTasks();
+        function resetSchoolTasks() {
+            if (confirm('هل تريد إعادة ضبط جدول أيام الدراسة ليوم جديد؟')) {
+                localStorage.removeItem('appSchoolTasksState');
+                renderSchoolTasks();
+            }
+        }
+
+        function resetVacationTasks() {
+            if (confirm('هل تريد إعادة ضبط جدول أيام الإجازة ليوم جديد؟')) {
+                localStorage.removeItem('appVacationTasksState');
+                renderVacationTasks();
             }
         }
 
         // Initial Render
-        renderTasks();
+        renderSchoolTasks();
+        renderVacationTasks();
     </script>
 </body>
 </html>
+
