@@ -2,255 +2,265 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معاً نحقق الحلم 🚀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>معاً نحقق الحلم 🚀 - التحديث الأسود الفاخر</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Tajawal', sans-serif; background-color: #0B0F17; color: #E2E8F0; }
+        .glass-card { background: rgba(18, 24, 38, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-input { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.12); color: #F8FAFC; }
+        .neon-glow-emerald { box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
+        .syrian-gradient { background: linear-gradient(135deg, #059669 0%, #10B981 50%, #047857 100%); }
     </style>
 </head>
-<body class="min-h-screen text-slate-800 pb-20">
+<body class="min-h-screen pb-24">
 
-    <!-- Header Section with Syrian Flag Accent Header -->
-    <header class="bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-900 text-white pt-5 pb-5 px-4 shadow-xl rounded-b-3xl relative overflow-hidden">
-        <!-- Syria Green Revolution Flag Accent Banner -->
-        <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-emerald-600 via-white to-black flex items-center justify-center">
-            <div class="flex gap-2">
-                <span class="text-[8px] text-red-600">★</span>
-                <span class="text-[8px] text-red-600">★</span>
-                <span class="text-[8px] text-red-600">★</span>
+    <!-- Header & Syrian Accent -->
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 px-4 pt-3 pb-4">
+        <div class="max-w-md mx-auto space-y-3">
+            
+            <!-- Syrian Independence Flag Bar Accent -->
+            <div class="w-full h-1.5 rounded-full overflow-hidden flex shadow-sm">
+                <div class="w-1/3 bg-emerald-600"></div>
+                <div class="w-1/3 bg-white flex items-center justify-center gap-1">
+                    <span class="text-[6px] text-red-600">★</span>
+                    <span class="text-[6px] text-red-600">★</span>
+                    <span class="text-[6px] text-red-600">★</span>
+                </div>
+                <div class="w-1/3 bg-black"></div>
             </div>
-        </div>
 
-        <div class="max-w-md mx-auto space-y-3 mt-1">
+            <!-- Header Title & User Status -->
             <div class="flex justify-between items-center">
-                <div>
-                    <h1 class="text-xl font-black tracking-wide flex items-center gap-1.5">
-                        <span>🚀 معاً نحقق الحلم</span>
-                        <span class="text-xs">🇸🇾</span>
-                    </h1>
-                    <p class="text-emerald-100 text-[11px] font-bold">تطبيقك الرياضي والتكيّف مع كل الأعمار</p>
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 rounded-2xl syrian-gradient flex items-center justify-center text-lg shadow-lg text-white font-bold">
+                        🚀
+                    </div>
+                    <div>
+                        <h1 class="text-base font-black text-white flex items-center gap-1.5">
+                            معاً نحقق الحلم
+                            <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">🇸🇾 v2.0</span>
+                        </h1>
+                        <p class="text-[10px] text-slate-400 font-medium">مساعدك الذكي للتغذية واللياقة حسب السن</p>
+                    </div>
                 </div>
-                <!-- XP Badge -->
-                <div class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-2xl border border-white/30 text-center">
-                    <div class="text-[9px] text-emerald-100 font-bold">المستوى <span id="user-level">1</span> ⭐</div>
-                    <div class="text-xs font-black text-amber-300"><span id="user-xp">0</span> XP</div>
+
+                <!-- Level & XP Widget -->
+                <div class="bg-slate-900/90 px-3 py-1.5 rounded-2xl border border-emerald-500/30 text-center">
+                    <div class="text-[9px] text-slate-400 font-bold">المستوى <span id="user-level" class="text-emerald-400">1</span> ⭐</div>
+                    <div class="text-xs font-black text-amber-400"><span id="user-xp">0</span> XP</div>
                 </div>
             </div>
 
-            <!-- Daily Targets Counter -->
-            <div class="bg-black/25 backdrop-blur-md p-3 rounded-2xl border border-white/20 flex justify-between items-center text-center text-xs shadow-inner">
-                <div>
-                    <div class="text-[9px] text-emerald-100">السعرات</div>
-                    <div class="font-extrabold text-amber-300"><span id="sum-cal">0</span> / <span id="target-cal">1650</span></div>
+            <!-- Daily Target Floating Glass Meter -->
+            <div class="bg-slate-900/80 p-3 rounded-2xl border border-slate-800 flex justify-between items-center text-center text-xs">
+                <div class="flex-1 border-l border-slate-800">
+                    <div class="text-[9px] text-slate-400">🔥 السعرات</div>
+                    <div class="font-extrabold text-amber-400 mt-0.5"><span id="sum-cal">0</span> / <span id="target-cal">1650</span></div>
                 </div>
-                <div>
-                    <div class="text-[9px] text-emerald-100">البروتين</div>
-                    <div class="font-extrabold text-emerald-300"><span id="sum-prot">0</span> / <span id="target-prot">85</span>ج</div>
+                <div class="flex-1 border-l border-slate-800">
+                    <div class="text-[9px] text-slate-400">🥩 البروتين</div>
+                    <div class="font-extrabold text-emerald-400 mt-0.5"><span id="sum-prot">0</span> / <span id="target-prot">85</span>ج</div>
                 </div>
-                <div>
-                    <div class="text-[9px] text-emerald-100">الكارب</div>
-                    <div class="font-extrabold text-cyan-300"><span id="sum-carbs">0</span> / <span id="target-carbs">180</span>ج</div>
+                <div class="flex-1">
+                    <div class="text-[9px] text-slate-400">🌾 الكارب</div>
+                    <div class="font-extrabold text-cyan-400 mt-0.5"><span id="sum-carbs">0</span> / <span id="target-carbs">180</span>ج</div>
                 </div>
-            </div>
-
-            <!-- Main Navigation Tabs -->
-            <div class="grid grid-cols-5 gap-1 bg-black/20 p-1.5 rounded-2xl text-[10px] font-bold text-center">
-                <button id="btn-tab-calc" onclick="switchTab('calc')" class="py-2 rounded-xl bg-white text-emerald-800 shadow-md">📊 بياناتك</button>
-                <button id="btn-tab-cam" onclick="switchTab('cam')" class="py-2 rounded-xl text-emerald-100 hover:text-white">📸 الكاميرا</button>
-                <button id="btn-tab-meals" onclick="switchTab('meals')" class="py-2 rounded-xl text-emerald-100 hover:text-white">🍳 الوجبات</button>
-                <button id="btn-tab-schedule" onclick="switchTab('schedule')" class="py-2 rounded-xl text-emerald-100 hover:text-white">⏱️ الجدول</button>
-                <button id="btn-tab-report" onclick="switchTab('report')" class="py-2 rounded-xl text-emerald-100 hover:text-white">🏁 التقرير</button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="max-w-md mx-auto px-4 mt-5 space-y-4">
+    <!-- Main Navigation Bar (Bottom App Dock) -->
+    <nav class="fixed bottom-3 left-4 right-4 z-50 max-w-md mx-auto glass-card rounded-3xl p-1.5 border border-slate-700/60 shadow-2xl">
+        <div class="grid grid-cols-5 gap-1 text-[10px] font-bold text-center">
+            <button id="btn-tab-calc" onclick="switchTab('calc')" class="py-2.5 rounded-2xl bg-emerald-600 text-white shadow-lg transition-all flex flex-col items-center gap-0.5">
+                <span class="text-sm">📊</span>
+                <span>بياناتك</span>
+            </button>
+            <button id="btn-tab-cam" onclick="switchTab('cam')" class="py-2.5 rounded-2xl text-slate-400 hover:text-white transition-all flex flex-col items-center gap-0.5">
+                <span class="text-sm">📸</span>
+                <span>الكاميرا</span>
+            </button>
+            <button id="btn-tab-meals" onclick="switchTab('meals')" class="py-2.5 rounded-2xl text-slate-400 hover:text-white transition-all flex flex-col items-center gap-0.5">
+                <span class="text-sm">🍳</span>
+                <span>الوجبات</span>
+            </button>
+            <button id="btn-tab-schedule" onclick="switchTab('schedule')" class="py-2.5 rounded-2xl text-slate-400 hover:text-white transition-all flex flex-col items-center gap-0.5">
+                <span class="text-sm">⏱️</span>
+                <span>الجدول</span>
+            </button>
+            <button id="btn-tab-report" onclick="switchTab('report')" class="py-2.5 rounded-2xl text-slate-400 hover:text-white transition-all flex flex-col items-center gap-0.5">
+                <span class="text-sm">🏁</span>
+                <span>التقرير</span>
+            </button>
+        </div>
+    </nav>
 
-        <!-- TAB 1: USER DATA & CALCULATOR -->
+    <!-- App Main Views Container -->
+    <main class="max-w-md mx-auto px-4 mt-4 space-y-4">
+
+        <!-- TAB 1: USER BODY DATA & CALCULATOR -->
         <div id="tab-calc" class="space-y-4">
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-3">
-                <h2 class="text-xs font-bold text-slate-700 flex items-center gap-2">
-                    <span>📏</span> إدخال بياناتك (توليد الجدول حسب العمر)
-                </h2>
+            <div class="glass-card p-5 rounded-3xl space-y-4 border border-slate-800">
+                <div class="flex items-center gap-2 pb-2 border-b border-slate-800">
+                    <span class="p-2 bg-emerald-500/10 rounded-xl text-emerald-400">📏</span>
+                    <h2 class="text-xs font-bold text-white">بيانات الجسم وحاسبة العمر والتكيّف</h2>
+                </div>
+
                 <div class="grid grid-cols-2 gap-3 text-xs">
                     <div>
-                        <label class="block text-slate-500 mb-1 font-semibold">الوزن (كجم)</label>
-                        <input type="number" id="input-weight" value="50" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-700">
+                        <label class="block text-slate-400 mb-1 font-semibold">الوزن (كجم)</label>
+                        <input type="number" id="input-weight" value="50" class="w-full p-3 glass-input rounded-2xl font-bold focus:outline-emerald-500">
                     </div>
                     <div>
-                        <label class="block text-slate-500 mb-1 font-semibold">الطول (سم)</label>
-                        <input type="number" id="input-height" value="142" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-700">
+                        <label class="block text-slate-400 mb-1 font-semibold">الطول (سم)</label>
+                        <input type="number" id="input-height" value="142" class="w-full p-3 glass-input rounded-2xl font-bold focus:outline-emerald-500">
                     </div>
                     <div>
-                        <label class="block text-slate-500 mb-1 font-semibold">العمر (سنوات)</label>
-                        <input type="number" id="input-age" value="12" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-700">
+                        <label class="block text-slate-400 mb-1 font-semibold">العمر (سنوات)</label>
+                        <input type="number" id="input-age" value="12" class="w-full p-3 glass-input rounded-2xl font-bold focus:outline-emerald-500">
                     </div>
                     <div>
-                        <label class="block text-slate-500 mb-1 font-semibold">الهدف</label>
-                        <select id="input-goal" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-700">
-                            <option value="fatloss">حرق دهون وبناء عضلات</option>
-                            <option value="maintain">المحافظة على الوزن</option>
-                            <option value="muscle">زيادة الكتلة العضلية</option>
+                        <label class="block text-slate-400 mb-1 font-semibold">الهدف الرياضي</label>
+                        <select id="input-goal" class="w-full p-3 glass-input rounded-2xl font-bold focus:outline-emerald-500 text-slate-200">
+                            <option value="fatloss" class="bg-slate-900">حرق دهون وبناء عضلات</option>
+                            <option value="maintain" class="bg-slate-900">المحافظة على الوزن</option>
+                            <option value="muscle" class="bg-slate-900">زيادة الكتلة العضلية</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="p-3 bg-emerald-50 rounded-2xl border border-emerald-100 text-[11px] text-emerald-800">
-                    💡 **الفئة العمرية المحددة:** <span id="age-group-label" class="font-bold text-emerald-900">ناشئين (أقل من 13 سنة)</span>
+                <div class="p-3 bg-emerald-950/40 rounded-2xl border border-emerald-800/40 text-[11px] text-emerald-300">
+                    💡 **الفئة العمرية المحددة:** <span id="age-group-label" class="font-bold text-emerald-400">ناشئين (أقل من 13 سنة)</span>
                 </div>
 
-                <button onclick="calculateMacrosAndSchedule()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl shadow-md text-xs transition-all">
-                    حساب احتياجك وتوليد جدول العمر الآن 🚀
+                <button onclick="calculateMacrosAndSchedule()" class="w-full syrian-gradient text-white font-bold py-3.5 rounded-2xl shadow-lg neon-glow-emerald text-xs transition-all">
+                    توليد خطة السعرات والجدول للعمر الآن 🚀
                 </button>
             </div>
         </div>
 
-        <!-- TAB 2: CAMERA / MEAL SCANNER -->
+        <!-- TAB 2: CAMERA & MEAL SCANNER -->
         <div id="tab-cam" class="space-y-4 hidden">
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-4">
-                <h2 class="text-xs font-bold text-slate-700 flex items-center gap-2">
-                    <span>📷</span> تصوير الوجبة بالكاميرا وحساب الماكروز
-                </h2>
+            <div class="glass-card p-5 rounded-3xl space-y-4">
+                <div class="flex items-center gap-2 pb-2 border-b border-slate-800">
+                    <span class="p-2 bg-emerald-500/10 rounded-xl text-emerald-400">📸</span>
+                    <h2 class="text-xs font-bold text-white">تصوير الوجبة بالكاميرا وحساب الماكروز</h2>
+                </div>
 
-                <div class="border-2 border-dashed border-emerald-300 bg-emerald-50/50 rounded-2xl p-5 text-center cursor-pointer hover:bg-emerald-100/50 transition-all" onclick="document.getElementById('file-input').click()">
+                <div class="border-2 border-dashed border-slate-700 bg-slate-900/50 rounded-2xl p-6 text-center cursor-pointer hover:border-emerald-500 transition-all" onclick="document.getElementById('file-input').click()">
                     <input type="file" id="file-input" accept="image/*" capture="environment" class="hidden" onchange="handleImageUpload(event)">
-                    <div id="cam-preview" class="space-y-1">
-                        <span class="text-3xl">📸</span>
-                        <p class="text-xs font-bold text-emerald-800">اضغط لالتقاط صورة للوجبة بالكاميرا</p>
-                        <p class="text-[10px] text-slate-400">أو اختر صورة من الجوال</p>
+                    <div id="cam-preview" class="space-y-1.5">
+                        <span class="text-3xl">📷</span>
+                        <p class="text-xs font-bold text-emerald-400">اضغط لالتقاط صورة للوجبة بالكاميرا</p>
+                        <p class="text-[10px] text-slate-500">أو اختيار صورة من المعرض</p>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-1">وصف أو شرح الوجبة (اختياري):</label>
-                    <textarea id="meal-desc" rows="2" placeholder="مثال: أرز ولحم مفروم مع ليمون، أو سندويتش لبنة وتونة..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-medium text-slate-700"></textarea>
+                    <label class="block text-xs font-bold text-slate-400 mb-1">وصف أو شرح الوجبة (اختياري):</label>
+                    <textarea id="meal-desc" rows="2" placeholder="مثال: أرز باللحم المفروم والليمون..." class="w-full p-3 glass-input rounded-2xl text-xs font-medium focus:outline-emerald-500"></textarea>
                 </div>
 
-                <button onclick="analyzeMealImage()" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold py-3 rounded-2xl shadow-md text-xs">
-                    تحليل الوجبة وحساب السعرات ⚡
+                <button onclick="analyzeMealImage()" class="w-full syrian-gradient text-white font-bold py-3.5 rounded-2xl shadow-lg text-xs">
+                    تحليل الصورة وحساب الماكروز ⚡
                 </button>
             </div>
 
-            <div id="cam-result" class="bg-white p-5 rounded-3xl shadow-md border border-slate-100 hidden space-y-3">
-                <div class="flex justify-between items-center pb-2 border-b border-slate-100">
-                    <h3 id="res-meal-title" class="text-xs font-extrabold text-emerald-700">نتيجة تحليل الوجبة</h3>
-                    <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-md">+50 XP 🎁</span>
+            <!-- Analysis Result -->
+            <div id="cam-result" class="glass-card p-5 rounded-3xl hidden space-y-3 border border-emerald-500/30">
+                <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                    <h3 id="res-meal-title" class="text-xs font-extrabold text-emerald-400">نتيجة تحليل الوجبة</h3>
+                    <span class="text-[10px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded-md border border-emerald-500/30">+50 XP 🎁</span>
                 </div>
                 
                 <div class="grid grid-cols-3 gap-2 text-center">
-                    <div class="bg-slate-50 p-2 rounded-xl border border-slate-100">
+                    <div class="bg-slate-900/60 p-2.5 rounded-2xl border border-slate-800">
                         <div class="text-[9px] text-slate-400 font-bold">السعرات</div>
-                        <div id="res-meal-cal" class="text-xs font-extrabold text-amber-600">0</div>
+                        <div id="res-meal-cal" class="text-xs font-extrabold text-amber-400">0</div>
                     </div>
-                    <div class="bg-slate-50 p-2 rounded-xl border border-slate-100">
+                    <div class="bg-slate-900/60 p-2.5 rounded-2xl border border-slate-800">
                         <div class="text-[9px] text-slate-400 font-bold">البروتين</div>
-                        <div id="res-meal-prot" class="text-xs font-extrabold text-emerald-600">0ج</div>
+                        <div id="res-meal-prot" class="text-xs font-extrabold text-emerald-400">0ج</div>
                     </div>
-                    <div class="bg-slate-50 p-2 rounded-xl border border-slate-100">
+                    <div class="bg-slate-900/60 p-2.5 rounded-2xl border border-slate-800">
                         <div class="text-[9px] text-slate-400 font-bold">الكارب</div>
-                        <div id="res-meal-carbs" class="text-xs font-extrabold text-cyan-600">0ج</div>
+                        <div id="res-meal-carbs" class="text-xs font-extrabold text-cyan-400">0ج</div>
                     </div>
                 </div>
 
-                <button onclick="addScannedMealToDaily()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs">
+                <button onclick="addScannedMealToDaily()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl text-xs shadow-md">
                     + إدراج الوجبة في مجموعك اليومي
                 </button>
             </div>
         </div>
 
-        <!-- TAB 3: VISUAL MEALS WITH COOKING RECIPES -->
+        <!-- TAB 3: VISUAL MEALS & RECIPES -->
         <div id="tab-meals" class="space-y-4 hidden">
-            <h3 class="text-xs font-bold text-slate-600">اقتراحات الوجبات الصحية وطريقة تحضيرها:</h3>
+            <h3 class="text-xs font-bold text-slate-400">اقتراحات وجبات صحية بالصور وطريقة التحضير:</h3>
 
             <!-- Meal Card 1 -->
-            <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden space-y-3 p-4">
-                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" class="w-full h-36 object-cover rounded-2xl" alt="أرز باللحم المفروم والليمون">
-                <div class="space-y-1.5">
+            <div class="glass-card rounded-3xl overflow-hidden p-4 space-y-3 border border-slate-800">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" class="w-full h-40 object-cover rounded-2xl shadow-md" alt="أرز باللحم المفروم والليمون">
+                <div class="space-y-1">
                     <div class="flex justify-between items-center">
-                        <h4 class="text-xs font-bold text-emerald-800">🍗 غداء: أرز باللحم المفروم والليمون</h4>
-                        <span class="text-[10px] bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded-lg">450 سعرة</span>
+                        <h4 class="text-xs font-bold text-white">🍗 غداء: أرز باللحم المفروم والليمون</h4>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold px-2 py-0.5 rounded-lg">450 سعرة</span>
                     </div>
                     <div class="text-[10px] font-bold text-slate-400 flex gap-2">
                         <span>بروتين: 32ج</span> | <span>كارب: 45ج</span> | <span>دهون: 11ج</span>
                     </div>
                 </div>
 
-                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 text-[11px] text-slate-600 space-y-1">
-                    <p class="font-bold text-emerald-700">👨‍🍳 طريقة التحضير:</p>
-                    <p>1. قم بطهي 6 ملاعق من الأرز الأبيض أو البني مع قليل من الملح.</p>
-                    <p>2. احمس 120 جرام من اللحم المفروم الصافي بدون زيوت إضافية.</p>
-                    <p>3. اخلط اللحم فوق الأرز، واعصر حبة ليمون طازجة فوق الطبق لزيادة الامتصاص والهضم، وقدمه مع صحن سلطة.</p>
+                <div class="bg-slate-900/80 p-3 rounded-2xl border border-slate-800 text-[11px] text-slate-300 space-y-1">
+                    <p class="font-bold text-emerald-400">👨‍🍳 طريقة التحضير الصحيحة:</p>
+                    <p>1. قم بطهي 6 ملاعق أرز أبيض أو بني بدون زيوت مضافة.</p>
+                    <p>2. احمس 120 جرام لحم مفروم صافي مع بهاراتك الخفيفة.</p>
+                    <p>3. اخلط اللحم مع الأرز واعصر حبة ليمون طازجة فوق الطبق لزيادة الامتصاص وتسريع الهضم.</p>
                 </div>
 
-                <button onclick="addManualMeal(450, 32, 45)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs">
-                    + تسجيل الوجبة في مجموعك اليومي
+                <button onclick="addManualMeal(450, 32, 45)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-2xl text-xs">
+                    + إدراج باليومية
                 </button>
             </div>
 
             <!-- Meal Card 2 -->
-            <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden space-y-3 p-4">
-                <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80" class="w-full h-36 object-cover rounded-2xl" alt="سندويتش تونة باللبنة والمقدوس">
-                <div class="space-y-1.5">
+            <div class="glass-card rounded-3xl overflow-hidden p-4 space-y-3 border border-slate-800">
+                <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80" class="w-full h-40 object-cover rounded-2xl shadow-md" alt="سندويتش تونة باللبنة والمقدوس">
+                <div class="space-y-1">
                     <div class="flex justify-between items-center">
-                        <h4 class="text-xs font-bold text-emerald-800">🐟 عشاء: سندويتش تونة باللبنة والمقدوس</h4>
-                        <span class="text-[10px] bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded-lg">410 سعرة</span>
+                        <h4 class="text-xs font-bold text-white">🐟 عشاء: سندويتش تونة باللبنة والمقدوس</h4>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold px-2 py-0.5 rounded-lg">410 سعرة</span>
                     </div>
                     <div class="text-[10px] font-bold text-slate-400 flex gap-2">
                         <span>بروتين: 30ج</span> | <span>كارب: 42ج</span> | <span>دهون: 12ج</span>
                     </div>
                 </div>
 
-                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 text-[11px] text-slate-600 space-y-1">
-                    <p class="font-bold text-emerald-700">👨‍🍳 طريقة التحضير:</p>
-                    <p>1. افتح علبة تونة وصفّها جيداً من الزيت أو الماء.</p>
-                    <p>2. ادهن خبز البر بملعقة كبيرة من اللبنة الخفيفة وحبة مقدوس مفرومة.</p>
-                    <p>3. أضف التونة فوق الخبز مع شرائح الطماطم والخيار المحببة وحمّص السندويتش.</p>
+                <div class="bg-slate-900/80 p-3 rounded-2xl border border-slate-800 text-[11px] text-slate-300 space-y-1">
+                    <p class="font-bold text-emerald-400">👨‍🍳 طريقة التحضير الصحيحة:</p>
+                    <p>1. صفّ علبة التونة الصافية جيداً من الزيت أو الماء.</p>
+                    <p>2. ادهن خبز البر بملعقة لبنة خفيفة وحبة مقدوس مفرومة.</p>
+                    <p>3. أضف التونة وشرائح الخيار والطماطم ثم حمّص السندويتش بالتوستر.</p>
                 </div>
 
-                <button onclick="addManualMeal(410, 30, 42)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs">
-                    + تسجيل الوجبة في مجموعك اليومي
-                </button>
-            </div>
-
-            <!-- Meal Card 3 -->
-            <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden space-y-3 p-4">
-                <img src="https://images.unsplash.com/photo-1517673400267-0251440c45dc?auto=format&fit=crop&w=600&q=80" class="w-full h-36 object-cover rounded-2xl" alt="شوفان بالعسل والرمان">
-                <div class="space-y-1.5">
-                    <div class="flex justify-between items-center">
-                        <h4 class="text-xs font-bold text-emerald-800">☀️ إفطار: شوفان بالحليب والرمان والعسل</h4>
-                        <span class="text-[10px] bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded-lg">330 سعرة</span>
-                    </div>
-                    <div class="text-[10px] font-bold text-slate-400 flex gap-2">
-                        <span>بروتين: 14ج</span> | <span>كارب: 52ج</span> | <span>دهون: 5ج</span>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 text-[11px] text-slate-600 space-y-1">
-                    <p class="font-bold text-emerald-700">👨‍🍳 طريقة التحضير:</p>
-                    <p>1. ضع 4 ملاعق من الشوفان في قدر صغير مع كأس حليب دافئ على نار هادئة لمدة 3 دقائق.</p>
-                    <p>2. اسكب الشوفان في صحن وأضف ملعقة عسل طبيعي فوقه.</p>
-                    <p>3. زيّنه بحبوب الرمان الطازجة أو نصف موزة مقطعة لتأكل وجبة غنية بالطاقة والنشاط!</p>
-                </div>
-
-                <button onclick="addManualMeal(330, 14, 52)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs">
-                    + تسجيل الوجبة في مجموعك اليومي
+                <button onclick="addManualMeal(410, 30, 42)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-2xl text-xs">
+                    + إدراج باليومية
                 </button>
             </div>
         </div>
 
         <!-- TAB 4: TASKS SCHEDULE ACCORDING TO AGE -->
         <div id="tab-schedule" class="space-y-4 hidden">
-            <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 space-y-3">
+            <div class="glass-card p-4 rounded-3xl space-y-3">
                 <div class="flex justify-between items-center mb-1">
                     <div>
-                        <h3 class="text-xs font-bold text-slate-700">الجدول المخصص لعمرك</h3>
-                        <p id="schedule-subtitle" class="text-[10px] text-slate-400">يتكيف تلقائياً مع السن المحدد</p>
+                        <h3 class="text-xs font-bold text-white">الجدول المخصص لعمرك</h3>
+                        <p id="schedule-subtitle" class="text-[10px] text-slate-400">يتكيف تلقائياً حسب الفئة العمرية</p>
                     </div>
-                    <span id="schedule-progress" class="text-xs font-extrabold text-emerald-600">0%</span>
+                    <span id="schedule-progress" class="text-xs font-extrabold text-emerald-400">0%</span>
                 </div>
                 <div id="schedule-tasks-list" class="space-y-2.5"></div>
             </div>
@@ -258,31 +268,31 @@
 
         <!-- TAB 5: END OF DAY REPORT -->
         <div id="tab-report" class="space-y-4 hidden">
-            <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-5 rounded-3xl shadow-lg space-y-4">
+            <div class="glass-card p-5 rounded-3xl space-y-4 border border-slate-800">
                 <h3 class="text-sm font-bold text-emerald-400 flex items-center gap-2">
                     <span>🏁</span> التقرير والإحصائيات المكتملة لليوم
                 </h3>
 
-                <div class="space-y-3">
-                    <div class="bg-white/10 p-3 rounded-2xl flex justify-between items-center text-xs">
-                        <span class="text-slate-300">إجمالي السعرات المستهلكة:</span>
+                <div class="space-y-2.5">
+                    <div class="bg-slate-900/80 p-3 rounded-2xl flex justify-between items-center text-xs border border-slate-800">
+                        <span class="text-slate-400">إجمالي السعرات المستهلكة:</span>
                         <span id="rep-cal" class="font-black text-amber-400 text-sm">0 kcal</span>
                     </div>
-                    <div class="bg-white/10 p-3 rounded-2xl flex justify-between items-center text-xs">
-                        <span class="text-slate-300">إجمالي البروتين (لبناء العضلات):</span>
+                    <div class="bg-slate-900/80 p-3 rounded-2xl flex justify-between items-center text-xs border border-slate-800">
+                        <span class="text-slate-400">إجمالي البروتين (لبناء العضلات):</span>
                         <span id="rep-prot" class="font-black text-emerald-400 text-sm">0 g</span>
                     </div>
-                    <div class="bg-white/10 p-3 rounded-2xl flex justify-between items-center text-xs">
-                        <span class="text-slate-300">إجمالي الكربوهيدرات (للطاقة):</span>
+                    <div class="bg-slate-900/80 p-3 rounded-2xl flex justify-between items-center text-xs border border-slate-800">
+                        <span class="text-slate-400">إجمالي الكربوهيدرات (للطاقة):</span>
                         <span id="rep-carbs" class="font-black text-cyan-400 text-sm">0 g</span>
                     </div>
-                    <div class="bg-white/10 p-3 rounded-2xl flex justify-between items-center text-xs">
-                        <span class="text-slate-300">نسبة إنجاز المهام والرياضة:</span>
+                    <div class="bg-slate-900/80 p-3 rounded-2xl flex justify-between items-center text-xs border border-slate-800">
+                        <span class="text-slate-400">نسبة إنجاز المهام والرياضة:</span>
                         <span id="rep-tasks" class="font-black text-teal-300 text-sm">0%</span>
                     </div>
                 </div>
 
-                <div id="rep-coach-verdict" class="bg-white/5 p-3 rounded-2xl text-[11px] text-slate-300 leading-relaxed border border-white/10">
+                <div id="rep-coach-verdict" class="bg-slate-900/90 p-3 rounded-2xl text-[11px] text-slate-300 leading-relaxed border border-emerald-500/20">
                     💡 **تقييم مدربك اليومي:** واصل تسجيل وجباتك المتبقية للوصول إلى هدفك اليومي بكفاءة!
                 </div>
             </div>
@@ -291,14 +301,14 @@
     </main>
 
     <!-- Creator Signature Footer -->
-    <footer class="mt-8 mb-4 text-center">
-        <div class="inline-block bg-white border border-slate-200 shadow-sm rounded-2xl px-5 py-2.5">
-            <p class="text-xs font-bold text-slate-700 flex items-center justify-center gap-1">
+    <footer class="mt-8 mb-6 text-center">
+        <div class="inline-block glass-card border border-slate-800 rounded-2xl px-5 py-2.5 shadow-xl">
+            <p class="text-xs font-bold text-slate-200 flex items-center justify-center gap-1.5">
                 <span>🛠️ صُنع بأيادي سورية من المبتكر</span>
-                <span class="text-emerald-600 font-extrabold">(عمر فادي عبد اللطيف)</span>
+                <span class="text-emerald-400 font-extrabold">(عمر فادي عبد اللطيف)</span>
                 <span>🇸🇾</span>
             </p>
-            <p class="text-[10px] text-slate-400 font-semibold mt-0.5">عمره 12 سنة - مخصص للذكاء والصحة واللياقة لكل الأعمار ✨</p>
+            <p class="text-[10px] text-slate-500 font-semibold mt-0.5">عمره 12 سنة - مخصص للذكاء والصحة واللياقة لكل الأعمار ✨</p>
         </div>
     </footer>
 
@@ -442,7 +452,7 @@
                 reader.onload = function(e) {
                     document.getElementById('cam-preview').innerHTML = `
                         <img src="${e.target.result}" class="max-h-36 mx-auto rounded-xl shadow-sm mb-1 object-cover">
-                        <p class="text-[10px] text-emerald-700 font-bold">تم التقاط الصورة بنجاح ✅</p>
+                        <p class="text-[10px] text-emerald-400 font-bold">تم التقاط الصورة بنجاح ✅</p>
                     `;
                 }
                 reader.readAsDataURL(file);
@@ -501,10 +511,10 @@
         function switchTab(tab) {
             ['calc', 'cam', 'meals', 'schedule', 'report'].forEach(t => {
                 document.getElementById(`tab-${t}`).classList.add('hidden');
-                document.getElementById(`btn-tab-${t}`).className = "py-2 rounded-xl text-emerald-100 hover:text-white";
+                document.getElementById(`btn-tab-${t}`).className = "py-2.5 rounded-2xl text-slate-400 hover:text-white transition-all flex flex-col items-center gap-0.5";
             });
             document.getElementById(`tab-${tab}`).classList.remove('hidden');
-            document.getElementById(`btn-tab-${tab}`).className = "py-2 rounded-xl bg-white text-emerald-800 shadow-md";
+            document.getElementById(`btn-tab-${tab}`).className = "py-2.5 rounded-2xl bg-emerald-600 text-white shadow-lg transition-all flex flex-col items-center gap-0.5";
         }
 
         function renderSchedule() {
@@ -524,14 +534,14 @@
 
                 const item = document.createElement('label');
                 item.className = `flex items-center justify-between p-3 rounded-2xl border transition-all cursor-pointer ${
-                    isChecked ? 'bg-emerald-50/60 border-emerald-200 text-slate-400 line-through' : 'bg-slate-50 border-slate-200/80 text-slate-700'
+                    isChecked ? 'bg-slate-900/40 border-emerald-900/40 text-slate-500 line-through' : 'bg-slate-900/80 border-slate-800 text-slate-200'
                 }`;
                 item.innerHTML = `
                     <div class="flex items-center gap-2.5">
-                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleTask('${t.id}')" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleTask('${t.id}')" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500">
                         <span class="text-xs font-bold">${t.text}</span>
                     </div>
-                    <span class="text-[10px] font-bold bg-white px-2 py-0.5 rounded-lg border border-slate-200 text-amber-600 shrink-0 mr-1">${t.time}</span>
+                    <span class="text-[10px] font-bold bg-slate-800 px-2 py-0.5 rounded-lg border border-slate-700 text-amber-400 shrink-0 mr-1">${t.time}</span>
                 `;
                 list.appendChild(item);
             });
@@ -541,7 +551,7 @@
             document.getElementById('rep-tasks').innerText = `${percent}%`;
 
             if (percent === 100 && typeof confetti === 'function') {
-                confetti({ particleCount: 50, spread: 60 });
+                confetti({ particleCount: 60, spread: 70 });
             }
         }
 
